@@ -21,6 +21,10 @@ public class Fraction {
         fraction_reduce();
     }
 
+    public Fraction(int numerator) {
+        this.numerator = numerator;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -77,5 +81,13 @@ public class Fraction {
                 "numerator=" + numerator +
                 ", denominator=" + denominator +
                 '}';
+    }
+
+    public Fraction plus(Fraction that) {
+        return new Fraction(this.numerator + that.numerator);
+    }
+
+    public int intValue() {
+        return numerator;
     }
 }

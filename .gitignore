@@ -16,3 +16,5 @@ gen
 Fraction-Java.iml
 
 
+/test/classes/
+/production/classes/
