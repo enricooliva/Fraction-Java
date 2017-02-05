@@ -18,3 +18,5 @@ Fraction-Java.iml
 
 /test/classes/
 /production/classes/
+/production/classes/ca/jbrains/setup/Fraction.class
+src/
