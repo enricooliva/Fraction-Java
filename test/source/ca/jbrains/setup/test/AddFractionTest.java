@@ -29,4 +29,12 @@ public class AddFractionTest {
     public void nonZeroPlusNonZero() throws Exception {
         assertEquals(7, new Fraction(3).plus(new Fraction(4)).intValue());
     }
+
+    @Test
+    public void nonTrivialDenominator() throws Exception {
+        final Fraction sum = new Fraction(1,5).plus(new Fraction(2,5));
+        assertEquals(3,sum.getNumerator());
+        assertEquals(5, sum.getDenominator());
+
+    }
 }
