@@ -7,22 +7,17 @@ import static java.lang.Math.abs;
  */
 public class Fraction {
 
-    private int numerator;
-    private int denominator;
+    private final int numerator;
+    private final int denominator;
 
-    public Fraction(int numerator, int denominator) throws Exception {
-
-        if (denominator==0){
-            throw new Exception("no zero based");
-        }
-
+    public Fraction(int numerator, int denominator){
         this.numerator = numerator;
         this.denominator = denominator;
-        fraction_reduce();
+        //fraction_reduce();
     }
 
     public Fraction(int numerator) {
-        this.numerator = numerator;
+        this(numerator,1);
     }
 
 
@@ -38,6 +33,7 @@ public class Fraction {
 
     }
 
+    //hashCode need to be consistent with equals
     @Override
     public int hashCode() {
         int result = numerator;
@@ -71,8 +67,8 @@ public class Fraction {
     {
         int gcd;
         gcd = util_gcd(this.numerator, this.denominator);
-        this.numerator /= gcd;
-        this.denominator /= gcd;
+        //this.numerator /= gcd;
+        //this.denominator /= gcd;
     }
 
     @Override
@@ -84,10 +80,23 @@ public class Fraction {
     }
 
     public Fraction plus(Fraction that) {
-        return new Fraction(this.numerator + that.numerator);
+        if (this.denominator != that.denominator){
+            return new Fraction(this.numerator * that.denominator + that.numerator * this.denominator,
+                    this.denominator * that.denominator);
+        }else {
+            return new Fraction(this.numerator + that.numerator, this.denominator);
+        }
     }
 
     public int intValue() {
-        return numerator;
+        return this.numerator;
+    }
+
+    public int getNumerator() {
+        return this.numerator;
+    }
+
+    public int getDenominator() {
+        return this.denominator;
     }
 }
